@@ -18,8 +18,17 @@ header {
   margin-bottom: 24px;
 }
 
+.eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #8cc8ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
 header h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2.2rem, 5vw, 3.3rem);
   margin: 0;
 }
 
@@ -47,12 +56,13 @@ header p {
 
 main {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 1.7fr 1fr;
   gap: 24px;
   align-items: start;
 }
 
-.map-container {
+.map-container,
+.info-panel {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 20px;
@@ -73,7 +83,7 @@ main {
   stroke: #d5e7f5;
   stroke-width: 2;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease, stroke-width 0.2s ease;
 }
 
 .province:hover {
@@ -83,8 +93,8 @@ main {
 
 .province.active {
   stroke: #ffffff;
-  stroke-width: 3;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.55));
+  stroke-width: 3.5;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.55));
 }
 
 .province.level-0 { fill: #4CAF50; }
@@ -95,18 +105,14 @@ main {
 .province.level-5 { fill: #E0E0E0; }
 
 .info-panel {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 20px;
-  padding: 22px;
   min-height: 300px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  padding: 22px;
 }
 
 #province-name {
   margin-top: 0;
   margin-bottom: 18px;
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
 }
 
 #province-info {
@@ -117,10 +123,10 @@ main {
 .code-badge {
   display: inline-block;
   padding: 8px 16px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   border-radius: 999px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   color: #fff;
 }
 
@@ -131,6 +137,50 @@ main {
 .badge-purple { background: #9C27B0; }
 .badge-white { background: #E0E0E0; color: #111; }
 .badge-none { background: #6b7280; }
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px;
+  margin: 12px 0 18px;
+}
+
+.meta-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+
+.meta-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.status-text {
+  margin: 0 0 12px;
+  font-size: 1.02rem;
+  color: #f3f9ff;
+}
+
+.tips {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: #d9ebff;
+}
+
+.tips li + li {
+  margin-top: 6px;
+}
 
 footer {
   text-align: center;
@@ -144,7 +194,13 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  header h1 {
-    font-size: 2rem;
+  .container {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .meta-grid {
+    grid-template-columns: 1fr;
   }
 }

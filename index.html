@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buienfixer.nl - Weerkaart Nederland</title>
+    <meta name="description" content="Buienfixer NL weerkaart met gevaarcodes per provincie">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <p class="eyebrow">Nederlandse weerkaart</p>
             <h1>⛈️ Buienfixer.nl</h1>
             <p>Weergevaar per Nederlandse provincie</p>
-            <div class="legend">
+            <div class="legend" aria-label="Legenda van risico niveau">
                 <span class="legend-item" style="background-color: #4CAF50;">🟢 Groen</span>
                 <span class="legend-item" style="background-color: #FFC107;">🟡 Geel</span>
                 <span class="legend-item" style="background-color: #FF9800;">🟠 Oranje</span>
@@ -22,52 +24,31 @@
         </header>
 
         <main>
-            <div class="map-container">
-                <svg id="map" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Provincie Groningen -->
-                    <polygon id="groningen" points="150,20 180,30 190,50 170,60 140,50" class="province" data-name="Groningen" data-code="0"/>
-                    
-                    <!-- Provincie Friesland -->
-                    <polygon id="friesland" points="120,40 150,20 140,50 110,60" class="province" data-name="Friesland" data-code="0"/>
-                    
-                    <!-- Provincie Drenthe -->
-                    <polygon id="drenthe" points="160,60 190,50 200,80 180,90" class="province" data-name="Drenthe" data-code="0"/>
-                    
-                    <!-- Provincie Flevoland -->
-                    <polygon id="flevoland" points="180,90 210,85 220,110 200,120" class="province" data-name="Flevoland" data-code="0"/>
-                    
-                    <!-- Provincie Overijssel -->
-                    <polygon id="overijssel" points="180,90 200,120 190,140 160,130" class="province" data-name="Overijssel" data-code="0"/>
-                    
-                    <!-- Provincie Gelderland -->
-                    <polygon id="gelderland" points="140,130 190,140 200,180 160,190" class="province" data-name="Gelderland" data-code="0"/>
-                    
-                    <!-- Provincie Utrecht -->
-                    <polygon id="utrecht" points="150,150 180,140 190,170 170,180" class="province" data-name="Utrecht" data-code="0"/>
-                    
-                    <!-- Provincie Noord-Holland -->
-                    <polygon id="noord-holland" points="120,110 150,100 160,130 140,130" class="province" data-name="Noord-Holland" data-code="0"/>
-                    
-                    <!-- Provincie Zuid-Holland -->
-                    <polygon id="zuid-holland" points="110,150 150,150 160,190 120,200" class="province" data-name="Zuid-Holland" data-code="0"/>
-                    
-                    <!-- Provincie Noord-Brabant -->
-                    <polygon id="noord-brabant" points="120,200 160,190 180,240 140,250" class="province" data-name="Noord-Brabant" data-code="0"/>
-                    
-                    <!-- Provincie Limburg -->
-                    <polygon id="limburg" points="160,250 180,240 190,280 170,290" class="province" data-name="Limburg" data-code="0"/>
-                    
-                    <!-- Provincie Zeeland -->
-                    <polygon id="zeeland" points="80,200 120,200 130,240 90,250" class="province" data-name="Zeeland" data-code="0"/>
-                </svg>
-            </div>
+            <section class="map-container" aria-label="Kaart met Nederlandse provincies">
+                <svg id="map" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="map-title">
+                    <title id="map-title">Weerkaart van Nederland</title>
 
-            <div class="info-panel">
+                    <polygon id="groningen" points="150,20 180,30 190,50 170,60 140,50" class="province level-2" data-name="Groningen" data-code="2"/>
+                    <polygon id="friesland" points="120,40 150,20 140,50 110,60" class="province level-1" data-name="Friesland" data-code="1"/>
+                    <polygon id="drenthe" points="160,60 190,50 200,80 180,90" class="province level-2" data-name="Drenthe" data-code="2"/>
+                    <polygon id="flevoland" points="180,90 210,85 220,110 200,120" class="province level-1" data-name="Flevoland" data-code="1"/>
+                    <polygon id="overijssel" points="180,90 200,120 190,140 160,130" class="province level-3" data-name="Overijssel" data-code="3"/>
+                    <polygon id="gelderland" points="140,130 190,140 200,180 160,190" class="province level-4" data-name="Gelderland" data-code="4"/>
+                    <polygon id="utrecht" points="150,150 180,140 190,170 170,180" class="province level-2" data-name="Utrecht" data-code="2"/>
+                    <polygon id="noord-holland" points="120,110 150,100 160,130 140,130" class="province level-1" data-name="Noord-Holland" data-code="1"/>
+                    <polygon id="zuid-holland" points="110,150 150,150 160,190 120,200" class="province level-3" data-name="Zuid-Holland" data-code="3"/>
+                    <polygon id="noord-brabant" points="120,200 160,190 180,240 140,250" class="province level-4" data-name="Noord-Brabant" data-code="4"/>
+                    <polygon id="limburg" points="160,250 180,240 190,280 170,290" class="province level-2" data-name="Limburg" data-code="2"/>
+                    <polygon id="zeeland" points="80,200 120,200 130,240 90,250" class="province level-1" data-name="Zeeland" data-code="1"/>
+                </svg>
+            </section>
+
+            <aside class="info-panel" aria-live="polite">
                 <h2 id="province-name">Klik op een provincie</h2>
                 <div id="province-info">
-                    <p>Selecteer een provincie om weergegevens te zien</p>
+                    <p>Selecteer een provincie om weergegevens te zien.</p>
                 </div>
-            </div>
+            </aside>
         </main>
 
         <footer>
